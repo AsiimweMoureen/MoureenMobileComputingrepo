@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,26 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyprofileScreen(title: 'Welcome to My Profile'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyprofileScreen extends StatefulWidget {
+  const MyprofileScreen({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -44,72 +38,268 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyprofileScreen> createState() => _MyprofileScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyprofileScreenState extends State<MyprofileScreen> {
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+
+            //MY PROFILE PICTURE
+            const SizedBox(height: 80,),
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(width: 3.0, color: Color.fromARGB(97, 117, 17, 117)),
+              ),
+              height: 130,
+              width: 130,
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/profileImage1.png',
+                  fit:BoxFit.cover
+                  ),
+              ),
+            ),
+            
+            //MY NAMES
+            const SizedBox(height: 30,),
             const Text(
-              'You have pushed the button this many times:',
+              'ASIIMWE MOUREEN',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 0.4
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+
+
+            //MY EMAIL ADDRESS
+            const SizedBox(height: 3,),
+            const Text(
+              'asiimwemoureen@gmail.com',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 0.3
+              ),
             ),
+
+
+            //MY PHONE NUMBER
+            const SizedBox(height: 3,),
+            const Text(
+              '+256 707233232',
+              style: TextStyle(
+                color: Color.fromARGB(179, 0, 0, 0),
+                fontSize: 13,
+                fontWeight: FontWeight.normal,
+                letterSpacing: 0.3
+              ),
+            ),
+ 
+
+            //HOBBIES TITLE
+            const SizedBox(height: 15,),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 245, 95, 145),
+                  border: Border.all(width: 1.0, color: Color.fromARGB(255, 233, 92, 139)),
+                ),
+                height: 40,
+                width: 300,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "My Hobbies",
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 0.32,
+                      fontWeight: FontWeight.w800
+                    ),
+                  
+                  ),
+                ),
+              ),
+            ),
+
+            //HOBBIES 1
+            const SizedBox(height: 13,),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color.fromARGB(255, 247, 179, 202), Color.fromARGB(255, 245, 238, 240)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight
+                  ),
+                  color: Color.fromARGB(255, 240, 203, 215),
+                  border: Border.all(width: 1.0, color: Color.fromARGB(255, 240, 209, 219)),
+                ),
+                height: 30,
+                width: 300,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Programming",
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 0.32,
+                      fontWeight: FontWeight.normal
+                    ),
+                  
+                  ),
+                ),
+              ),
+            ),
+
+
+            //HOBBIES 2
+            const SizedBox(height: 5,),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color.fromARGB(255, 247, 179, 202), Color.fromARGB(255, 245, 238, 240)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight
+                  ),                  
+                  color: Color.fromARGB(255, 240, 203, 215),
+                  border: Border.all(width: 1.0, color: Color.fromARGB(255, 240, 209, 219)),
+                ),
+                height: 30,
+                width: 300,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Swimming",
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 0.32,
+                      fontWeight: FontWeight.normal
+                    ),
+                  
+                  ),
+                ),
+              ),
+            ),
+
+
+
+            //HOBBIES 3
+            const SizedBox(height: 5,),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color.fromARGB(255, 247, 179, 202), Color.fromARGB(255, 245, 238, 240)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight
+                  ),                 
+                  color: Color.fromARGB(255, 240, 203, 215),
+                  border: Border.all(width: 1.0, color: Color.fromARGB(255, 240, 209, 219)),
+                ),
+                height: 30,
+                width: 300,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Travelling",
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 0.32,
+                      fontWeight: FontWeight.normal
+                    ),
+                  
+                  ),
+                ),
+              ),
+            ),
+
+
+            //HOBBIES 4
+            const SizedBox(height: 5,),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color.fromARGB(255, 247, 179, 202), Color.fromARGB(255, 245, 238, 240)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight
+                  ),                  
+                  color: Color.fromARGB(255, 240, 203, 215),
+                  border: Border.all(width: 1.0, color: Color.fromARGB(255, 240, 209, 219)),
+                ),
+                height: 30,
+                width: 300,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Watching Movies",
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 0.32,
+                      fontWeight: FontWeight.normal
+                    ),
+                  
+                  ),
+                ),
+              ),
+            ),
+
+
+            //HOBBIES 5
+            const SizedBox(height: 5,),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color.fromARGB(255, 247, 179, 202), Color.fromARGB(255, 245, 238, 240)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight
+                  ),                 
+                  color: Color.fromARGB(255, 240, 203, 215),
+                  border: Border.all(width: 1.0, color: Color.fromARGB(255, 240, 209, 219)),
+                ),
+                height: 30,
+                width: 300,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Cooking",
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 0.32,
+                      fontWeight: FontWeight.normal
+                    ),
+                  
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
