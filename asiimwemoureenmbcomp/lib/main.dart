@@ -113,7 +113,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
  
 
             //HOBBIES TITLE
-            const SizedBox(height: 15,),
+            const SizedBox(height: 20,),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Container(
